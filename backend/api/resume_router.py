@@ -39,7 +39,10 @@ async def analyze_resumes(
         clean_text = extract_text_from_pdf(clean_temp.name)
         injected_text = extract_text_from_pdf(injected_temp.name)
         
-        # Evaluate resumes with Azure OpenAI
+        # Check if extracted text is empty
+        if not clean_text or not injected_text:
+            raise HTTPException(status_code=422, detail="Failed to extract text from one or both PDFs")
+        
         clean_evaluation = await evaluate_resume(clean_text)
         injected_evaluation = await evaluate_resume(injected_text)
         
