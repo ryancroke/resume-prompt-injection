@@ -31,12 +31,13 @@ async def analyze_resumes(
         clean_temp.close()
         injected_temp.close()
         
+        # Check if files are empty
+        if os.stat(clean_temp.name).st_size == 0 or os.stat(injected_temp.name).st_size == 0:
+            raise HTTPException(status_code=422, detail="One or both uploaded files are empty")
+        
         # Extract text from PDFs
         clean_text = extract_text_from_pdf(clean_temp.name)
         injected_text = extract_text_from_pdf(injected_temp.name)
-        
-        if not clean_text or not injected_text:
-            raise HTTPException(status_code=422, detail="Failed to extract text from one or both PDFs")
         
         # Evaluate resumes with Azure OpenAI
         clean_evaluation = await evaluate_resume(clean_text)
