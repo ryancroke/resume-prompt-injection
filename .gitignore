@@ -1,3 +1,9 @@
+# mise outputs
+*code-review.md
+*is_malicious.md
+*missing-tests.md
+*repo_output.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -108,3 +114,4 @@ ENV
 # Dependency directories
 node_modules/
 jspm_packages/
+.aider*
