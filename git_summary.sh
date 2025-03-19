@@ -1,0 +1,1 @@
+{ echo "# Git Repository Summary"; echo "## Commit History"; git log --pretty=format:'%h %an %ad %s' --date=short; echo "## Code Diff"; git show --pretty=format:'Commit: %h%nAuthor: %an%nDate: %ad%nMessage: %s%n' HEAD; echo "## Contributors"; git shortlog -sn | awk '{print "- **"$2"**: "$1" commits"}'; } > git_summary.md  
