@@ -2,6 +2,8 @@
 
 This application demonstrates how prompt injection attacks can be performed on resume/CV evaluation systems that use Large Language Models (LLMs).
 
+![resume_injector](resume_injector_app.png)
+
 ## Overview
 
 The application allows users to upload two PDF resumes:
